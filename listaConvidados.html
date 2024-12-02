@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Convidados</title>
-    <link rel="stylesheet" href="/css/estiloConvidados.css">
+    <link rel="stylesheet" href="/estiloConvidados.css">
 </head>
 <body>
     <div id="container">
@@ -33,7 +33,7 @@
     <script>
         async function carregarConvidados() {
             try {
-                const response = await fetch('/convidados');
+                const response = await fetch('https://api-teste-git-main-israelbernardo22s-projects.vercel.app/convidados');
                 const convidados = await response.json();
 
                 const tbody = document.getElementById('lista-convidados');
@@ -66,7 +66,7 @@
         async function deletarConvidado(id) {
             if (confirm('Tem certeza que deseja deletar este convidado?')) {
                 try {
-                    const response = await fetch(`/convidados/${id}`, {
+                    const response = await fetch(`https://api-teste-git-main-israelbernardo22s-projects.vercel.app/convidados/${id}`, {
                         method: 'DELETE'
                     });
 
