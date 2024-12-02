@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniversário do Tetequinho</title>
+    <link rel="stylesheet" href="./estilo.css">
+    <link rel="icon" href="./imgs/IMG_5170-removebg-preview.png" type="image/x-icon">
+</head>
+<body>
+    <div id="geral">
+        <div id="titulo">
+            <h1 class="textHandelson">SAFARI DO</h1>
+            <h2 class="textAprila">Théo</h2>
+        </div>
+        
+        <!-- Removi o action no formulário, pois será tratado via JS -->
+        <form id="rsvp-form" onsubmit="enviarFormulario(event)">
+            <div id="formularioPresenca">
+                <p id="textTituloFormulario">CONFIRMAÇÃO DE PRESENÇA</p>
+                <input type="text" placeholder="Digite seu nome" id="nome" name="nome" required>
+                <input type="number" placeholder="Informe a quantidade de Adultos" id="quantAdultos" name="quantAdultos" required min="0">
+                <input type="number" placeholder="Informe a quantidade de crianças" id="quantCriancas" name="quantCriancas" required min="0">
+            
+                <div id="alignBotao">
+                    <button id="buttonConfirm" type="submit">
+                        <img src="./public/imgs/76156245477325c0e7be8dc909b19048-removebg-preview.png" alt="PatinhaBotão">
+                        <p id="textConfirm" class="textAprila">CONFIRMAR</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+        
+        <div id="containerBotoesFim">
+            <button class="buttonFim" onclick="window.open('https://www.canva.com/design/DAGXr-HLGGU/9urQEJdvisF7K7QZnzkHKQ/edit', '_blank')">
+                <img src="./public/imgs/76156245477325c0e7be8dc909b19048-removebg-preview.png" alt="PatinhaBotão">
+                <p class="textAprila" id="textFim">SUGESTÃO DE PRESENTE</p>
+            </button>
+            <button class="buttonFim" onclick="window.open('https://maps.app.goo.gl/qTtNoq4vj3hVCeYy9?g_st=com.google.maps.preview.copy', '_blank')">
+                <img src="./public/imgs/76156245477325c0e7be8dc909b19048-removebg-preview.png" alt="PatinhaBotão">
+                <p class="textAprila" id="textFim">LOCAL DO EVENTO</p>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        async function enviarFormulario(event) {
+    event.preventDefault(); // Evita o envio padrão do formulário
+
+    const nome = document.getElementById('nome').value;
+    const quantAdultos = parseInt(document.getElementById('quantAdultos').value);
+    const quantCriancas = parseInt(document.getElementById('quantCriancas').value);
+
+    // Validando se os valores são números válidos
+    if (isNaN(quantAdultos) || isNaN(quantCriancas)) {
+        alert('Por favor, insira números válidos para a quantidade de adultos e crianças.');
+        return;
+    }
+
+    try {
+        const response = await fetch('/confirmar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nome, quantAdultos, quantCriancas })
+        });
+
+        const result = await response.text(); // Captura o texto da resposta
+
+        if (response.ok) {
+            alert('Confirmação registrada com sucesso!'); // Exibe o pop-up
+            document.getElementById('rsvp-form').reset(); // Limpa o formulário
+        } else {
+            alert('Erro ao salvar os dados. Resposta do servidor: ' + result); // Exibe a mensagem do servidor
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao salvar os dados. Tente novamente.');
+    }
+}
+    </script>
+</body>
+</html>

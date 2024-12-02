@@ -1,0 +1,159 @@
+@import url(https://db.onlinewebfonts.com/c/4aedb9283857944b5870ed258b2904e6?family=Handelson+W00+Three);
+@import url('https://fonts.cdnfonts.com/css/aprilia');
+
+*{
+    margin: 0px;
+
+}
+
+body{
+    
+    background-image: url(./public/imgs/Fundo\ pc.jpg); /* Caminho corrigido */
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+} @media (max-width: 1450px) {
+    body {
+        background-image: url(/public/imgs/fundo\ intermediario.jpg);
+       
+    }
+  } 
+@media (max-width: 500px) {
+    body {
+        background-image: url(/public/imgs/fundo\ mobile.jpg);
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100vh;
+    }
+  }
+  @media (min-width: 501px) and (max-width: 900px) {
+    body {
+        background-image: url(/public/imgs/fundo\ mobile.jpg);
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100vh;
+    }
+  }
+.textHandelson{
+    font-size: 5vh;
+    font-family: "Handelson W00 Three";
+    color: #7a4a26;
+}
+
+#textConfirm{
+    font-size: 15px;
+    color: #ffff;
+}
+#textTituloFormulario{
+    font-size: 3vh;
+    margin: 15px;
+}
+.textAprila{
+    font-size: 8vh;
+    color: #5e862b;
+}
+#textFim{
+    font-size: 2vh;
+}  @media (min-width: 501px) and (max-width: 900px) {
+    #textFim{
+        font-size: 1.4vh;
+    }
+  } @media (max-width: 500px) {
+    #textFim{
+        font-size: 1.2vh;
+    }
+  }
+
+
+
+#formularioPresenca{
+    background-color: #7a4a26;
+    color: #ffff;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top center;
+    
+    border-radius: 10px;
+    
+}  @media (max-width: 768px) {
+    #formularioPresenca{
+        width: 38vh;
+        height: 35vh;
+        text-align: center;
+    }
+    
+} @media (max-width: 375px) {
+    #formularioPresenca{
+        width: 38vh;
+        height: 40vh;
+        text-align: center;
+    }
+    
+    
+} 
+
+#alignBotao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#containerBotoesFim{
+    display: flex;
+    flex-direction: row;
+
+    margin: 30px;
+    
+}
+input{
+    width: 70%;
+    height: 10%;
+    margin: 5px;
+    border-radius: 10px;
+    border-color: none;
+}
+button{
+    background-color: transparent;
+    border: none;
+    color: #ffff;
+    cursor: pointer;
+}
+img{
+    width: 50px;
+    transition: transform 0.15s ease;
+} img:hover{
+    transform: scale(0.8);
+}
+
+#geral{
+    margin-bottom: 20px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#titulo{
+    margin: 25px;
+    
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

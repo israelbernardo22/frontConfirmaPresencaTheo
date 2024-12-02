@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Convidados</title>
+    <link rel="stylesheet" href="/css/estiloConvidados.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Lista de Convidados</h1>
+
+        <div id="totais">
+            <p>Total de Adultos: <span id="total-adultos">0</span></p>
+            <p>Total de Crianças: <span id="total-criancas">0</span></p>
+        </div>
+
+        <table id="tabela-convidados">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Adultos</th>
+                    <th>Crianças</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="lista-convidados">
+                <!-- Os convidados serão inseridos aqui dinamicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function carregarConvidados() {
+            try {
+                const response = await fetch('/convidados');
+                const convidados = await response.json();
+
+                const tbody = document.getElementById('lista-convidados');
+                tbody.innerHTML = '';
+
+                let totalAdultos = 0;
+                let totalCriancas = 0;
+
+                convidados.forEach(convidado => {
+                    totalAdultos += parseInt(convidado.quantadultos, 10);
+                    totalCriancas += parseInt(convidado.quantcriancas, 10);
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${convidado.nome}</td>
+                        <td>${convidado.quantadultos}</td>
+                        <td>${convidado.quantcriancas}</td>
+                        <td><button class="delete-btn" onclick="deletarConvidado('${convidado.id}')">Deletar</button></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                document.getElementById('total-adultos').textContent = totalAdultos;
+                document.getElementById('total-criancas').textContent = totalCriancas;
+            } catch (error) {
+                console.error('Erro ao carregar convidados:', error);
+            }
+        }
+
+        async function deletarConvidado(id) {
+            if (confirm('Tem certeza que deseja deletar este convidado?')) {
+                try {
+                    const response = await fetch(`/convidados/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert('Convidado deletado com sucesso!');
+                        carregarConvidados(); // Atualiza a lista
+                    } else {
+                        alert('Erro ao deletar o convidado.');
+                    }
+                } catch (error) {
+                    console.error('Erro ao deletar convidado:', error);
+                }
+            }
+        }
+
+        // Carrega os convidados ao carregar a página
+        window.onload = carregarConvidados;
+    </script>
+</body>
+</html>
