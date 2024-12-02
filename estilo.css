@@ -8,7 +8,7 @@
 
 body{
     
-    background-image: url(./public/imgs/Fundo\ pc.jpg); /* Caminho corrigido */
+    background-image: url(./imgs/Fundo\ pc.jpg); /* Caminho corrigido */
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -21,13 +21,13 @@ body{
     align-items: center;
 } @media (max-width: 1450px) {
     body {
-        background-image: url(/public/imgs/fundo\ intermediario.jpg);
+        background-image: url(/imgs/fundo\ intermediario.jpg);
        
     }
   } 
 @media (max-width: 500px) {
     body {
-        background-image: url(/public/imgs/fundo\ mobile.jpg);
+        background-image: url(/imgs/fundo\ mobile.jpg);
         background-size: cover;
         background-position: top center;
         background-repeat: no-repeat;
@@ -37,7 +37,7 @@ body{
   }
   @media (min-width: 501px) and (max-width: 900px) {
     body {
-        background-image: url(/public/imgs/fundo\ mobile.jpg);
+        background-image: url(/imgs/fundo\ mobile.jpg);
         background-size: cover;
         background-position: top center;
         background-repeat: no-repeat;
