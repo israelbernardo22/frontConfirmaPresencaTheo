@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Convidados</title>
-    <link rel="stylesheet" href="/estiloConvidados.css">
+    <link rel="stylesheet" href="./estiloConvidados.css">
 </head>
 <body>
     <div id="container">
@@ -15,19 +15,21 @@
             <p>Total de Crianças: <span id="total-criancas">0</span></p>
         </div>
 
-        <table id="tabela-convidados">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Adultos</th>
-                    <th>Crianças</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody id="lista-convidados">
-                <!-- Os convidados serão inseridos aqui dinamicamente -->
-            </tbody>
-        </table>
+        <div  class="tabela-rolavel">
+            <table id="tabela-convidados">
+                 <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Adultos</th>
+                        <th>Crianças</th>
+                        <th>Ações</th>
+                   </tr>
+                </thead>
+                <tbody id="lista-convidados">
+                 <!-- Os convidados serão inseridos aqui dinamicamente -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>

@@ -1,6 +1,6 @@
 body{
     
-    background-image: url('/imgs/Fundo%20pc.jpg'); /* Caminho corrigido */
+    background-image: url(./imgs/Fundo%20pc.jpg); /* Caminho corrigido */
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -41,7 +41,7 @@ body{
   #tabela-convidados {
     width: 100%;
     border-collapse: collapse; /* Faz as bordas das células se fundirem */
-    margin: 20px 0;
+    margin: 0;
     font-family: Arial, sans-serif;
     text-align: center;
 }
@@ -53,7 +53,14 @@ body{
 }
 
 #tabela-convidados th {
-    background-color: #5e862b; /* Cor de fundo das células do cabeçalho */
+    position: sticky; /* Fixa o cabeçalho no topo durante a rolagem */
+    top: 0; /* Define que deve permanecer no topo do contêiner */
+    background-color: #d9a769; /* Mantém a cor de fundo do cabeçalho */
+    color: white; /* Define a cor do texto do cabeçalho */
+    z-index: 2; /* Garante que o cabeçalho fique acima das células */
+    text-align: center;
+    padding: 10px;
+    
     color: white; /* Cor do texto do cabeçalho */
 }
 
@@ -92,3 +99,12 @@ button.delete-btn:hover {
     
     border-radius: 10px;
 }
+.tabela-rolavel {
+    max-height: 400px; /* Altura máxima da área visível */
+    overflow-y: auto;  /* Ativa a rolagem vertical */
+    overflow-x: hidden;  /* Ativa a rolagem horizontal (se necessário) */
+    border: 1px solid #ddd; /* Opcional: Adiciona uma borda para destacar */
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+  }
