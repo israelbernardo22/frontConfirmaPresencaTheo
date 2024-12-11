@@ -36,6 +36,23 @@ body{
         background-attachment: fixed;
         height: 100vh;
     }
+
+    #tabela-convidados {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+        width: 100%; /* Faz com que a tabela ocupe toda a largura do contêiner */
+    }
+
+    #tabela-convidados th, #tabela-convidados td {
+        padding: 5px; /* Reduz os espaços internos */
+    }
+
+    #tabela-convidados th {
+        white-space: wrap; /* Evita quebra de texto no cabeçalho */
+    }
+
+    #tabela-convidados td {
+        word-wrap: break-word; /* Permite quebra de palavras grandes */
+    }
   }
 
   #tabela-convidados {
