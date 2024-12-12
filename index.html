@@ -46,6 +46,9 @@
     <script>
         async function enviarFormulario(event) {
             event.preventDefault(); // Evita o envio padrão do formulário
+
+            const botaoConfirmar = document.getElementById('buttonConfirm');
+            botaoConfirmar.disabled = true; // Desabilita o botão
     
             const nome = document.getElementById('nome').value;
             const quantAdultos = parseInt(document.getElementById('quantAdultos').value);
@@ -54,6 +57,7 @@
             // Verificar se as quantidades são números válidos
             if (isNaN(quantAdultos) || isNaN(quantCriancas)) {
                 alert('Por favor, insira números válidos para a quantidade de adultos e crianças.');
+                botaoConfirmar.disabled = false; // Reativa o botão
                 return;
             }
     
@@ -79,7 +83,9 @@
             } catch (error) {
                 console.error('Erro:', error);
                 alert('Erro ao salvar os dados. Tente novamente.');
-            }
+            }finally {
+            botaoConfirmar.disabled = false; // Reativa o botão ao final
+        }
         }
     </script>        
 </body>
